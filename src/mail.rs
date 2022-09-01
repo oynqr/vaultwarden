@@ -40,9 +40,6 @@ fn smtp_transport() -> AsyncSmtpTransport<Tokio1Executor> {
     // Determine security
     let smtp_client = if CONFIG.smtp_security() != *"off" {
         let mut tls_parameters = TlsParameters::builder(host);
-        if CONFIG.smtp_accept_invalid_hostnames() {
-            tls_parameters = tls_parameters.dangerous_accept_invalid_hostnames(true);
-        }
         if CONFIG.smtp_accept_invalid_certs() {
             tls_parameters = tls_parameters.dangerous_accept_invalid_certs(true);
         }
