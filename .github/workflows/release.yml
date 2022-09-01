@@ -15,8 +15,7 @@ jobs:
   # Some checks to determine if we need to continue with building a new docker.
   # We will skip this check if we are creating a tag, because that has the same hash as a previous run already.
   skip_check:
-    # Only run this in the upstream repo and not on forks
-    if: ${{ github.repository == 'dani-garcia/vaultwarden' }}
+    if: ${{ github.repository == 'oynqr/vaultwarden' }}
     name: Cancel older jobs when running
     permissions:
       actions: write
@@ -35,7 +34,7 @@ jobs:
 
   docker-build:
     needs: skip_check
-    if: ${{ needs.skip_check.outputs.should_skip != 'true' && github.repository == 'dani-garcia/vaultwarden' }}
+    if: ${{ needs.skip_check.outputs.should_skip != 'true' && github.repository == 'oynqr/vaultwarden' }}
     name: Build Vaultwarden containers
     permissions:
       packages: write
