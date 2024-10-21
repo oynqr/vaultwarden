@@ -207,9 +207,11 @@ reqsign = { version = "0.16.5", optional = true }
 # The debug symbols are to provide better panic traces
 # Also enable fat LTO and use 1 codegen unit for optimizations
 [profile.release]
-strip = "debuginfo"
+strip = "symbols"
 lto = "fat"
 codegen-units = 1
+panic = "abort"
+opt-level = 3
 
 # A little bit of a speedup
 [profile.dev]
